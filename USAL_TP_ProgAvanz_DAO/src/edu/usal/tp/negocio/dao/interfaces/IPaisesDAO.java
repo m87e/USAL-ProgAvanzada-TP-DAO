@@ -9,9 +9,9 @@ public interface IPaisesDAO {
 
 	void AgregarPais(Paises pais) throws IOException;
 
-	void ModificarPais(Paises pais);
+	void ModificarPais(Paises oldPais, Paises newPais) throws IOException;
 
-	void EliminarPais(Paises pais);
+	void EliminarPais(Paises pais) throws IOException;
 
 	List<Paises> GetAll() throws IOException;
 

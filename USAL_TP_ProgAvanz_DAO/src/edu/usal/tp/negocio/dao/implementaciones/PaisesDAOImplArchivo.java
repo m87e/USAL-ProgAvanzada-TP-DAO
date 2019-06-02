@@ -36,14 +36,40 @@ public class PaisesDAOImplArchivo implements IPaisesDAO {
 	}
 
 	@Override
-	public void ModificarPais(Paises pais) {
+	public void ModificarPais(Paises oldPais, Paises newPais) throws IOException {
 		// TODO Auto-generated method stub
+
+		List<Paises> listadoPaises = GetAll();
+
+		String nLinea;
+
+		for (Paises p : listadoPaises) {
+
+			if (p.getId() == oldPais.getId()) {
+				p.setId(newPais.getId());
+				p.setNombre(newPais.getNombre());
+			}
+
+		}
 
 	}
 
 	@Override
-	public void EliminarPais(Paises pais) {
+	public void EliminarPais(Paises pais) throws IOException {
 		// TODO Auto-generated method stub
+
+		List<Paises> listadoPaises = GetAll();
+
+		String nLinea;
+
+		for (Paises p : listadoPaises) {
+
+			if (p.getId() == pais.getId()) {
+				p.setId(null);
+				p.setNombre(null);
+			}
+
+		}
 
 	}
 
