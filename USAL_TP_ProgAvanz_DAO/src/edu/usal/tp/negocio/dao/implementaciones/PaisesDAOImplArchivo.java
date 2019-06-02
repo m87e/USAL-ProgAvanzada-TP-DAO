@@ -39,6 +39,11 @@ public class PaisesDAOImplArchivo implements IPaisesDAO {
 	public void ModificarPais(Paises oldPais, Paises newPais) throws IOException {
 		// TODO Auto-generated method stub
 
+		archivo = new File("/Users/juan/Desktop/paises.txt");
+		archivoWriter = new FileWriter(archivo);
+		archivoBufferWriter = new BufferedWriter(archivoWriter);
+
+		
 		List<Paises> listadoPaises = GetAll();
 
 		String nLinea;
