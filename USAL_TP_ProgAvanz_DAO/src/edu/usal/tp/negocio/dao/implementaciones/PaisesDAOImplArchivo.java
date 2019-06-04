@@ -7,7 +7,7 @@ import edu.usal.tp.negocio.dao.dominio.Paises;
 import edu.usal.tp.negocio.dao.interfaces.IPaisesDAO;
 
 public class PaisesDAOImplArchivo implements IPaisesDAO {
-
+  
 	private File archivo;
 	private FileWriter archivoWriter;
 	private FileReader archivoReader;

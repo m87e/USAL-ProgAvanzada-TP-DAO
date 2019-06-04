@@ -7,7 +7,7 @@ import edu.usal.tp.negocio.dao.dominio.Aerolinea;
 import edu.usal.tp.negocio.dao.interfaces.IAerolineaDAO;
 
 public class AerolineaDAOImplArchivo implements IAerolineaDAO {
-
+ 
 	private File archivo;
 	private FileWriter archivoWriter;
 	private FileReader archivoReader;

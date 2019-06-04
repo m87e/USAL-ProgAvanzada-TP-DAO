@@ -1,5 +1,6 @@
 package edu.usal.tp.negocio.dao.interfaces;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -14,5 +15,7 @@ public interface IProvinciasDAO {
 	void EliminarProvincia(Provincias provincia) throws IOException;
 
 	List<Provincias> GetAll() throws IOException;
+
+	void EliminarProvincia(Provincias provincia, String IDRemove) throws IOException;
 
 }
