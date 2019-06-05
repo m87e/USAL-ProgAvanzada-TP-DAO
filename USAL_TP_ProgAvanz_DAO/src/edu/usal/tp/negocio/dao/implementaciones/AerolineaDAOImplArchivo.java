@@ -2,12 +2,13 @@ package edu.usal.tp.negocio.dao.implementaciones;
 
 import java.io.*;
 import java.util.*;
+import java.util.function.Predicate;
 
 import edu.usal.tp.negocio.dao.dominio.Aerolinea;
 import edu.usal.tp.negocio.dao.interfaces.IAerolineaDAO;
 
 public class AerolineaDAOImplArchivo implements IAerolineaDAO {
- 
+
 	private File archivo;
 	private FileWriter archivoWriter;
 	private FileReader archivoReader;
@@ -16,9 +17,15 @@ public class AerolineaDAOImplArchivo implements IAerolineaDAO {
 
 	@Override
 	public void AgregarAerolinea(Aerolinea aerolinea) throws IOException {
-		// TODO Auto-generated method stub
+
 		archivo = new File("/Users/juan/Desktop/aerolineas.txt");
-		archivoWriter = new FileWriter(archivo);
+
+		if (!archivo.exists()) {
+			archivoWriter = new FileWriter(archivo);
+		} else {
+			archivoWriter = new FileWriter(archivo, true);
+		}
+
 		archivoBufferWriter = new BufferedWriter(archivoWriter);
 
 		String str = SaveAerolinea(aerolinea);
@@ -30,25 +37,42 @@ public class AerolineaDAOImplArchivo implements IAerolineaDAO {
 	}
 
 	private String SaveAerolinea(Aerolinea aerolinea) {
-		// TODO Auto-generated method stub
 		return aerolinea.getId() + ";" + aerolinea.getNombre() + ";" + aerolinea.getAlianza() + "\n";
 	}
 
 	@Override
 	public void ModificarAerolinea(Aerolinea oldAerolinea, Aerolinea newAerolinea) throws IOException {
-		// TODO Auto-generated method stub
 
+		List<Aerolinea> listadoAerolineas = GetAll();
+
+		for (Aerolinea a : listadoAerolineas) {
+
+			if (a.getId().equals(oldAerolinea.getId())) {
+				a.setId(newAerolinea.getId());
+				a.setNombre(newAerolinea.getNombre());
+				a.setAlianza(newAerolinea.getAlianza());
+			}
+
+			AgregarAerolinea(a);
+		}
 	}
 
 	@Override
-	public void EliminarAerolinea(Aerolinea pais) throws IOException {
-		// TODO Auto-generated method stub
+	public void EliminarAerolinea(Aerolinea aerolinea) throws IOException {
+
+		List<Aerolinea> listadoAerolineas = GetAll();
+
+		listadoAerolineas.removeIf(o -> o.getId().equals(aerolinea.getId()));
+
+		for (Aerolinea a : listadoAerolineas) {
+
+			AgregarAerolinea(a);
+		}
 
 	}
 
 	@Override
 	public List<Aerolinea> GetAll() throws IOException {
-		// TODO Auto-generated method stub
 
 		archivo = new File("/Users/juan/Desktop/aerolineas.txt");
 		archivoReader = new FileReader(archivo);

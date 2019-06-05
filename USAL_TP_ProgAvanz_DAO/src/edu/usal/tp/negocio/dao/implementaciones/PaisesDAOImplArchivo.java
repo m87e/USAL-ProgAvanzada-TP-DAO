@@ -47,7 +47,7 @@ public class PaisesDAOImplArchivo implements IPaisesDAO {
 
 		for (Paises p : listadoPaises) {
 
-			if (p.getId() == oldPais.getId()) {
+			if (p.getId().equals(oldPais.getId())) {
 				p.setId(newPais.getId());
 				p.setNombre(newPais.getNombre());
 			}

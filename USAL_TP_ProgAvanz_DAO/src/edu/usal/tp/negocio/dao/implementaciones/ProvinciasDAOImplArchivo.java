@@ -56,7 +56,7 @@ public class ProvinciasDAOImplArchivo implements IProvinciasDAO {
 
 		for (Provincias p : listadoProvincias) {
 
-			if (p.getId() == oldProvincia.getId()) {
+			if (p.getId().equals(oldProvincia.getId())) {
 				p.setId(newPovincia.getId());
 				p.setNombre(newPovincia.getNombre());
 			}
@@ -83,7 +83,6 @@ public class ProvinciasDAOImplArchivo implements IProvinciasDAO {
 	@Override
 	public List<Provincias> GetAll() throws IOException {
 
-		// TODO Auto-generated method stub
 		// ajustarlo al config.propiertes
 		archivo = new File(
 				"C://Users//menrique002//git//USAL-ProgAvanzada-TP-DAO//USAL_TP_ProgAvanz_DAO//provincias.txt");
