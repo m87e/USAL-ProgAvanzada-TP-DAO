@@ -7,7 +7,7 @@ import edu.usal.tp.negocio.dao.dominio.Paises;
 import edu.usal.tp.negocio.dao.interfaces.IPaisesDAO;
 
 public class PaisesDAOImplArchivo implements IPaisesDAO {
-  
+
 	private File archivo;
 	private FileWriter archivoWriter;
 	private FileReader archivoReader;
@@ -16,7 +16,6 @@ public class PaisesDAOImplArchivo implements IPaisesDAO {
 
 	@Override
 	public void AgregarPais(Paises pais) throws IOException {
-		// TODO Auto-generated method stub
 
 		archivo = new File("/Users/juan/Desktop/paises.txt");
 		archivoWriter = new FileWriter(archivo);
@@ -37,16 +36,8 @@ public class PaisesDAOImplArchivo implements IPaisesDAO {
 
 	@Override
 	public void ModificarPais(Paises oldPais, Paises newPais) throws IOException {
-		// TODO Auto-generated method stub
 
-		archivo = new File("/Users/juan/Desktop/paises.txt");
-		archivoWriter = new FileWriter(archivo);
-		archivoBufferWriter = new BufferedWriter(archivoWriter);
-
-		
 		List<Paises> listadoPaises = GetAll();
-
-		String nLinea;
 
 		for (Paises p : listadoPaises) {
 
@@ -55,24 +46,22 @@ public class PaisesDAOImplArchivo implements IPaisesDAO {
 				p.setNombre(newPais.getNombre());
 			}
 
+			AgregarPais(p);
+
 		}
 
 	}
 
 	@Override
 	public void EliminarPais(Paises pais) throws IOException {
-		// TODO Auto-generated method stub
 
 		List<Paises> listadoPaises = GetAll();
 
-		String nLinea;
+		listadoPaises.removeIf(o -> o.getId().equals(pais.getId()));
 
 		for (Paises p : listadoPaises) {
 
-			if (p.getId() == pais.getId()) {
-				p.setId(null);
-				p.setNombre(null);
-			}
+			AgregarPais(p);
 
 		}
 
@@ -80,7 +69,7 @@ public class PaisesDAOImplArchivo implements IPaisesDAO {
 
 	@Override
 	public List<Paises> GetAll() throws IOException {
-		// TODO Auto-generated method stub
+
 		archivo = new File("/Users/juan/Desktop/paises.txt");
 		archivoReader = new FileReader(archivo);
 		archivoBufferReader = new BufferedReader(archivoReader);
