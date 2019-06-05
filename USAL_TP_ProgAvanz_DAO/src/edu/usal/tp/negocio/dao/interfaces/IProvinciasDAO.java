@@ -8,14 +8,12 @@ import edu.usal.tp.negocio.dao.dominio.Provincias;
 
 public interface IProvinciasDAO {
 
-	void AgregarProvincia(Provincias provincia) throws IOException; 
+	void AgregarProvincia(Provincias provincia) throws IOException;
 
 	void ModificarProvincia(Provincias oldProvincia, Provincias newPovincia) throws IOException;
 
 	void EliminarProvincia(Provincias provincia) throws IOException;
 
 	List<Provincias> GetAll() throws IOException;
-
-	void EliminarProvincia(Provincias provincia, String IDRemove) throws IOException;
 
 }

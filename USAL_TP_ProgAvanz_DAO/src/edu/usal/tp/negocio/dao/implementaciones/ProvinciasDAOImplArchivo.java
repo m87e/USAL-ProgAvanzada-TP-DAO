@@ -25,7 +25,6 @@ public class ProvinciasDAOImplArchivo implements IProvinciasDAO {
 
 	@Override
 	public void AgregarProvincia(Provincias provincia) throws IOException {
-		// TODO Auto-generated method stub
 
 		archivo = new File("provincias.txt");
 
@@ -53,24 +52,30 @@ public class ProvinciasDAOImplArchivo implements IProvinciasDAO {
 	public void ModificarProvincia(Provincias oldProvincia, Provincias newPovincia) throws IOException {
 		// TODO Auto-generated method stub
 
+		List<Provincias> listadoProvincias = GetAll();
+
+		for (Provincias p : listadoProvincias) {
+
+			if (p.getId() == oldProvincia.getId()) {
+				p.setId(newPovincia.getId());
+				p.setNombre(newPovincia.getNombre());
+			}
+
+			AgregarProvincia(p);
+
+		}
+
 	}
 
 	@Override
-	public void EliminarProvincia(Provincias provincia, String IDRemove) throws IOException {
-		// TODO Auto-generated method stub
-		archivo = new File(
-				"C://Users//menrique002//git//USAL-ProgAvanzada-TP-DAO//USAL_TP_ProgAvanz_DAO//provincias.txt");
-		archivoReader = new FileReader(archivo);
-		archivoBufferReader = new BufferedReader(archivoReader);
+	public void EliminarProvincia(Provincias provincia) throws IOException {
 
-		String linea;
-		List<Provincias> listadoProvincias = new ArrayList<>();
+		List<Provincias> listadoProvincias = GetAll();
 
-		while ((linea = archivoBufferReader.readLine()) != null) {
-			listadoProvincias.add(Parse(linea));
-			if (listadoProvincias.contains(IDRemove)) {
-				// listadoProvincias.remove(o)
-			}
+		listadoProvincias.removeIf(o -> o.getId().equals(provincia.getId()));
+
+		for (Provincias p : listadoProvincias) {
+			AgregarProvincia(p);
 		}
 
 	}
@@ -104,12 +109,6 @@ public class ProvinciasDAOImplArchivo implements IProvinciasDAO {
 		provincia.setNombre(atributos[1]);
 
 		return provincia;
-	}
-
-	@Override
-	public void EliminarProvincia(Provincias provincia) throws IOException {
-		// TODO Auto-generated method stub
-
 	}
 
 }

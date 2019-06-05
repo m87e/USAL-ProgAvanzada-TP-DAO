@@ -18,7 +18,13 @@ public class PaisesDAOImplArchivo implements IPaisesDAO {
 	public void AgregarPais(Paises pais) throws IOException {
 
 		archivo = new File("/Users/juan/Desktop/paises.txt");
-		archivoWriter = new FileWriter(archivo);
+
+		if (!archivo.exists()) {
+			archivoWriter = new FileWriter(archivo);
+		} else {
+			archivoWriter = new FileWriter(archivo, true);
+		}
+
 		archivoBufferWriter = new BufferedWriter(archivoWriter);
 
 		String str = SavePais(pais);
