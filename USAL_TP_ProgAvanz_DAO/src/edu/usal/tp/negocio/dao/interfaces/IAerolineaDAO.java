@@ -11,7 +11,7 @@ public interface IAerolineaDAO {
 
 	void ModificarAerolinea(Aerolinea oldAerolinea, Aerolinea newAerolinea) throws IOException;
 
-	void EliminarAerolinea(Aerolinea pais) throws IOException;
+	void EliminarAerolinea(Aerolinea aerolinea) throws IOException;
 
 	List<Aerolinea> GetAll() throws IOException;
 
