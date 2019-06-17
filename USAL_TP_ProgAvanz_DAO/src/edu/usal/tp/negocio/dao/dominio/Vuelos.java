@@ -11,52 +11,84 @@ public class Vuelos {
 	private Date fechaHoraSalida; // se ingresa
 	private Date fechaHoraLlegada; // se calcula
 	private String tiempoVuelo; // chequearlo con el date que dato suma al date
+
 	public String getNumVuelo() {
 		return numVuelo;
 	}
+
 	public void setNumVuelo(String numVuelo) {
 		this.numVuelo = numVuelo;
 	}
+
 	public Integer getCantAsientos() {
 		return cantAsientos;
 	}
+
 	public void setCantAsientos(Integer cantAsientos) {
 		this.cantAsientos = cantAsientos;
 	}
+
 	public Aeropuerto getAeropuertoSalida() {
 		return aeropuertoSalida;
 	}
+
+	public String getAeropuertoSalidaID() {
+		return aeropuertoSalida.getIdAeropuerto();
+	}
+
 	public void setAeropuertoSalida(Aeropuerto aeropuertoSalida) {
 		this.aeropuertoSalida = aeropuertoSalida;
 	}
+
+	public void setAeropuertoSalida(String idAeropuerto) {
+		this.aeropuertoSalida.setIdAeropuerto(idAeropuerto);
+	}
+
+	public String getAeropuertoLlegadaID() {
+		return aeropuertoLlegada.getIdAeropuerto();
+	}
+
 	public Aeropuerto getAeropuertoLlegada() {
 		return aeropuertoLlegada;
 	}
+
 	public void setAeropuertoLlegada(Aeropuerto aeropuertoLlegada) {
 		this.aeropuertoLlegada = aeropuertoLlegada;
 	}
+
+	public void setAeropuertoLlegada(String idAeropuerto) {
+		this.aeropuertoLlegada.setIdAeropuerto(idAeropuerto);
+	}
+
 	public Date getFechaHoraSalida() {
 		return fechaHoraSalida;
 	}
+
 	public void setFechaHoraSalida(Date fechaHoraSalida) {
 		this.fechaHoraSalida = fechaHoraSalida;
 	}
+
 	public Date getFechaHoraLlegada() {
 		return fechaHoraLlegada;
 	}
+
 	public void setFechaHoraLlegada(Date fechaHoraLlegada) {
 		this.fechaHoraLlegada = fechaHoraLlegada;
 	}
+
 	public String getTiempoVuelo() {
 		return tiempoVuelo;
 	}
+
 	public void setTiempoVuelo(String tiempoVuelo) {
 		this.tiempoVuelo = tiempoVuelo;
 	}
+
 	public Vuelos() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public Vuelos(String numVuelo, Integer cantAsientos, Aeropuerto aeropuertoSalida, Aeropuerto aeropuertoLlegada,
 			Date fechaHoraSalida, Date fechaHoraLlegada, String tiempoVuelo) {
 		super();
@@ -68,9 +100,7 @@ public class Vuelos {
 		this.fechaHoraLlegada = fechaHoraLlegada;
 		this.tiempoVuelo = tiempoVuelo;
 	}
-	
-	
-	
+
 }
 
 //Los numeros de vuelo deberian formarse como:
