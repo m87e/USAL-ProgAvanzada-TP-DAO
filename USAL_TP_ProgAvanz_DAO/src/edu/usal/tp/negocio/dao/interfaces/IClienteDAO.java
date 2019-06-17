@@ -9,7 +9,7 @@ public interface IClienteDAO {
 
 	void AgregarCliente(Cliente cliente) throws IOException;
 
-	void ModificarCliente(Cliente oldCliente, Cliente newCliente) throws IOException;
+	void ModificarCliente(Cliente cliente) throws IOException;
 
 	void EliminarCliente(Cliente cliente) throws IOException;
 

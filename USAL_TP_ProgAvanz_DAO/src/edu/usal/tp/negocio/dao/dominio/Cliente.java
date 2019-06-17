@@ -69,6 +69,9 @@ public class Cliente {
 	public void setTel(Telefono tel) {
 		this.tel = tel;
 	}
+	public void setTelID(int ID) {
+		this.tel.setID(ID);
+	}
 	public PasajeroFrecuente getPasfre() {
 		return pasfre;
 	}
@@ -81,6 +84,15 @@ public class Cliente {
 	public void setDir(DirCompleta dir) {
 		this.dir = dir;
 	}
+	
+	
+	public void setTelefono (String ID, String numPersonal, String numCelular,String numLaboral ) {
+		this.tel.setID(ID);
+		this.tel.setNumPersonal(numPersonal);
+		this.tel.setNumCelular(numCelular);
+		this.tel.setNumLaboral(numLaboral);
+	}
+	
 	public Cliente() {
 		
 		// TODO Auto-generated constructor stub
