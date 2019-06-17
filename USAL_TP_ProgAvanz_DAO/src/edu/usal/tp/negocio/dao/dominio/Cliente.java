@@ -88,8 +88,8 @@ public class Cliente {
 		this.tel = tel;
 	}
 
-	public void setTelID(int ID) {
-		this.tel.setID(ID);
+	public void setTelID(int id) {
+		this.tel.setID(id);
 	}
 
 	public PasajeroFrecuente getPasfre() {
