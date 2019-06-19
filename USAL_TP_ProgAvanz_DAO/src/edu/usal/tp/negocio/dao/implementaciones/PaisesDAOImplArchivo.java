@@ -36,7 +36,9 @@ public class PaisesDAOImplArchivo implements IPaisesDAO {
 	}
 
 	private String SavePais(Paises pais) {
-		return pais.getId() + ";" + pais.getNombre() + "\n";
+		return 		  pais.getId() + 
+				";" + pais.getNombre() + 
+				"\r\n";
 
 	}
 

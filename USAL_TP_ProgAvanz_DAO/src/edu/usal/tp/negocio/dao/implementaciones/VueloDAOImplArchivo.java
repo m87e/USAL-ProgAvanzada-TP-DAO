@@ -23,10 +23,11 @@ public class VueloDAOImplArchivo implements IVuelosDAO {
 	private BufferedWriter archivoBufferWriter;
 	private BufferedReader archivoBufferReader;
 
+	String path = "/Users/juan/Desktop/vuelos.txt"; 
 	@Override
 	public void AgregarVuelo(Vuelos vuelos) throws IOException {
 		// TODO Auto-generated method stub
-		archivo = new File("/Users/juan/Desktop/vuelos.txt");
+		archivo = new File(path);
 
 		if (!archivo.exists()) {
 			archivoWriter = new FileWriter(archivo);
@@ -45,10 +46,14 @@ public class VueloDAOImplArchivo implements IVuelosDAO {
 	}
 
 	private String SaveVuelos(Vuelos vuelos) {
-		// TODO Auto-generated method stub
-		return vuelos.getNumVuelo() + ";" + vuelos.getAeropuertoSalida().getIdAeropuerto() + ";"
-				+ vuelos.getAeropuertoLlegada().getIdAeropuerto() + ";" + vuelos.getFechaHoraSalida().toString() + ";"
-				+ vuelos.getFechaHoraLlegada().toString() + ";" + vuelos.getTiempoVuelo() + "\n";
+		
+		return 		  vuelos.getNumVuelo() + 
+				";" + vuelos.getAeropuertoSalida().getIdAeropuerto() + 
+				";" + vuelos.getAeropuertoLlegada().getIdAeropuerto() + 
+				";" + vuelos.getFechaHoraSalida().toString() + 
+				";"	+ vuelos.getFechaHoraLlegada().toString() + 
+				";" + vuelos.getTiempoVuelo() + 
+				"\r\n";
 	}
 
 	@Override
@@ -94,7 +99,7 @@ public class VueloDAOImplArchivo implements IVuelosDAO {
 	public List<Vuelos> GetAll() throws IOException, ParseException {
 		// TODO Auto-generated method stub
 
-		archivo = new File("/Users/juan/Desktop/cliente.txt");
+		archivo = new File(path);
 		archivoReader = new FileReader(archivo);
 		archivoBufferReader = new BufferedReader(archivoReader);
 

@@ -44,7 +44,9 @@ public class AeropuertosDAOImplArchivo implements IAeropuertoDAO {
 
 	private String SaveAeropuerto(Aeropuerto aeropuerto) {
 		// TODO Auto-generated method stub
-		return aeropuerto.getIdAeropuerto() + ";" + aeropuerto.getCiudad() + "\n";
+		return 		  aeropuerto.getIdAeropuerto() + 
+				";" + aeropuerto.getCiudad() + 
+				"\r\n";
 	}
 
 	@Override

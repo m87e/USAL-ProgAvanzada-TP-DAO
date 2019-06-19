@@ -45,7 +45,9 @@ public class ProvinciasDAOImplArchivo implements IProvinciasDAO {
 	}
 
 	private String SaveProvincia(Provincias provincia) {
-		return provincia.getId() + ";" + provincia.getNombre() + "\n";
+		return 		  provincia.getId() + 
+				";" + provincia.getNombre() + 
+				"\r\n";
 	}
 
 	@Override

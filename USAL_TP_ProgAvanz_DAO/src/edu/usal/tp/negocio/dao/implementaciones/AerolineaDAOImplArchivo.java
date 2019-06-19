@@ -37,7 +37,10 @@ public class AerolineaDAOImplArchivo implements IAerolineaDAO {
 	}
 
 	private String SaveAerolinea(Aerolinea aerolinea) {
-		return aerolinea.getId() + ";" + aerolinea.getNombre() + ";" + aerolinea.getAlianza() + "\n";
+		return 	 	  aerolinea.getId() + 
+				";" + aerolinea.getNombre() + 
+				";" + aerolinea.getAlianza() + 
+				"\r\n";
 	}
 
 	@Override

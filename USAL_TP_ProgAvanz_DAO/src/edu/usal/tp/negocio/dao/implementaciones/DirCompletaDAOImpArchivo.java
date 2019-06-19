@@ -50,8 +50,8 @@ public class DirCompletaDAOImpArchivo implements IDirCompletaDAO{
 				";" + dir.getCiudad() +
 				";" + dir.getCodigoPostal() +
 				";" + dir.getPais().getId() +
-				";" + dir.getProvincia().getId()
-					+ "\n";
+				";" + dir.getProvincia().getId()+ 
+				"\r\n";
 	}
 
 	@Override

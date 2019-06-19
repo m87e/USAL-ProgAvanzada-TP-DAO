@@ -3,10 +3,13 @@ package edu.usal.tp.negocio.dao.implementaciones;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,13 +57,13 @@ public class ClientesDAOImpArchivo implements IClienteDAO {
 				";"	+ cliente.getDir().getID() +
 				";"	+ cliente.getFechaNac() +
 				";"	+ cliente.getPas().getNumeroPasaporte() +
-				";"	+ cliente.getPasfre().getNumero() 
-					+ "\n";
+				";"	+ cliente.getPasfre().getNumero() +
+				"\r\n";
 
 	}
 
 	@Override
-	public void ModificarCliente(Cliente cliente) throws IOException {
+	public void ModificarCliente(Cliente cliente) throws IOException, ParseException {
 		List<Cliente> listadoCliente = GetAll();
 
 		for (Cliente c : listadoCliente) {
@@ -86,7 +89,7 @@ public class ClientesDAOImpArchivo implements IClienteDAO {
 	}
 
 	@Override
-	public void EliminarCliente(Cliente cliente) throws IOException {
+	public void EliminarCliente(Cliente cliente) throws IOException, ParseException {
 		
 
 		List<Cliente> listadoClientes = GetAll();
@@ -102,7 +105,7 @@ public class ClientesDAOImpArchivo implements IClienteDAO {
 	}
 	
 	@Override
-	public List<Cliente> GetAll() throws IOException {
+	public List<Cliente> GetAll() throws IOException, ParseException{
 		// TODO Auto-generated method stub
 
 		archivo = new File(path);
@@ -119,7 +122,7 @@ public class ClientesDAOImpArchivo implements IClienteDAO {
 		return listadoClientes;
 	}
 
-	private Cliente ParseCliente(String linea) {
+	private Cliente ParseCliente(String linea) throws ParseException{
 		// TODO Auto-generated method stub
 
 		String[] atributos = linea.split(";");
@@ -134,7 +137,7 @@ public class ClientesDAOImpArchivo implements IClienteDAO {
 		c.setCuit(atributos[5]);
 		c.setEmail(atributos[6]);
 		c.setDirID(Integer.valueOf(atributos[7]));
-		c.setFechaNac(Date.valueOf(atributos[8]));
+		c.setFechaNac(new SimpleDateFormat("dd/MM/yyyy").parse(atributos[8]));
 		c.setPasID(atributos[9]);
 		c.setPasfreID(atributos[10]);
 		

@@ -2,14 +2,17 @@ package edu.usal.tp.negocio.dao.main;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
 import edu.usal.tp.negocio.dao.dominio.Cliente;
 import edu.usal.tp.negocio.dao.dominio.Provincias;
 import edu.usal.tp.negocio.dao.dominio.Telefono;
+import edu.usal.tp.negocio.dao.factory.ClientesFactory;
 import edu.usal.tp.negocio.dao.factory.ProvinciasFactory;
 import edu.usal.tp.negocio.dao.factory.TelefonoFactory;
+import edu.usal.tp.negocio.dao.interfaces.IClienteDAO;
 import edu.usal.tp.negocio.dao.interfaces.IProvinciasDAO;
 import edu.usal.tp.negocio.dao.interfaces.ITelefonoDAO;
 import edu.usal.tp.negocio.dao.util.IOGeneral;
@@ -21,6 +24,7 @@ public class main {
 		System.out.println("Testing");
 		System.out.println("1- Provincias");
 		System.out.println("2- Telefono");
+		System.out.println("3- Clientes");
 
 		int op = IOGeneral.leerInt("Opcion", "Error");
 
@@ -89,7 +93,30 @@ public class main {
 			cli1.setDni("859494854");
 			cli1.setEmail("afdf@rfgerfg.com");
 
-			// cli1.setTelefono("1", "4324234", "23423", "234234");
+			IClienteDAO impCliDAO = ClientesFactory.GetImplementatios("Archivo");
+			
+			try {
+				impCliDAO.AgregarCliente(cli1);
+				cli1.setNombre("Jonh");
+				cli1.setApellido("Smith");
+				cli1.setDni("123445678");
+				cli1.setCuit("12-12346345345-1");
+				cli1.setEmail("qwer@qwer.com");
+				
+				Date d = new Date ();
+				d.setDate(2);
+				d.setMonth(10);
+				d.setYear(1999);
+				
+				cli1.setFechaNac(d);
+				cli1.setTelID(1);
+				cli1.setTelefono(1, "123456", "123415", "123452");
+				
+				
+			} catch (Exception e) {
+				System.out.println("El archivo no fue encontrado");
+				e.printStackTrace();
+			}
 
 			break;
 

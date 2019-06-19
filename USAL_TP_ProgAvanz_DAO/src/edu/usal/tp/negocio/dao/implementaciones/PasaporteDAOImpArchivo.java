@@ -48,8 +48,8 @@ public class PasaporteDAOImpArchivo implements IPasaporteDAO{
 				";" + pas.getAutoridadEmision() + 
 				";" + pas.getFechaEmision() + 
 				";" + pas.getFechaVencimiento()+
-				";" + pas.getPais().getId()
-					+ "\n";
+				";" + pas.getPais().getId()	+ 
+				"\r\n";
 	}
 
 	@Override

@@ -46,7 +46,11 @@ public class TelefonoDAOImpArchivo implements ITelefonoDAO{
 	}
 
 	private String SaveTelefono(Telefono tel) {
-		return tel.getID()  +";" +tel.getNumPersonal() + ";" + tel.getNumLaboral()+";" + tel.getNumCelular() + "\n";
+		return  	  tel.getID()  +
+				";" + tel.getNumPersonal() + 
+				";" + tel.getNumLaboral()+
+				";" + tel.getNumCelular() + 
+				"\r\n";
 	}
 
 	@Override

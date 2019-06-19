@@ -45,8 +45,8 @@ public class PasajeroFrecuenteDAOImplArchivo implements IPasajeroFrecuenteDAO {
 		return 		  pasFre.getNumero() +
 				";" + pasFre.getCategoria() + 
 				";" + pasFre.getAlianza()+ 
-				";" + pasFre.getAerolinea().getId()
-					+ "\n";
+				";" + pasFre.getAerolinea().getId()	+ 
+				"\r\n";
 	}
 
 	@Override

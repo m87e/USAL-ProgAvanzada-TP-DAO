@@ -48,8 +48,13 @@ public class VentaDAOImplArchivo implements IVentaDAO {
 	}
 
 	private String SaveVenta(Venta venta) {
-		return venta.getId() + ";" + venta.getCliID() + ";" + venta.getVueID() + ";" + venta.getAeroID() + ";"
-				+ venta.getFechaHoraVenta().toString() + ";" + venta.getFormaPago() + "\n";
+		return 		  venta.getId() + 
+				";" + venta.getCliID() + 
+				";" + venta.getVueID() + 
+				";" + venta.getAeroID() + 
+				";"	+ venta.getFechaHoraVenta().toString() + 
+				";" + venta.getFormaPago() + 
+				"\r\n";
 	}
 
 	@Override
