@@ -41,5 +41,9 @@ public class PasajeroFrecuente {
 	public PasajeroFrecuente() {
 		// TODO Auto-generated constructor stub
 	}
+	public void setAerolineaID(String id) {
+		this.aerolinea.setId(id);
+		
+	}
 
 }

@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +21,11 @@ public class ClientesDAOImpArchivo implements IClienteDAO {
 	private FileReader archivoReader;
 	private BufferedWriter archivoBufferWriter;
 	private BufferedReader archivoBufferReader;
+	String path = "C://Users//menrique002//git//USAL-ProgAvanzada-TP-DAO//USAL_TP_ProgAvanz_DAO//cliente.txt";
 
 	@Override
 	public void AgregarCliente(Cliente cliente) throws IOException {
-		archivo = new File("C://Users//menrique002//git//USAL-ProgAvanzada-TP-DAO//USAL_TP_ProgAvanz_DAO//cliente.txt");
+		archivo = new File(path);
 
 		if (!archivo.exists()) {
 			archivoWriter = new FileWriter(archivo);
@@ -42,8 +44,18 @@ public class ClientesDAOImpArchivo implements IClienteDAO {
 	}
 
 	private String SaveCliente(Cliente cliente) {
-		return cliente.getId() + ";" + cliente.getNombre() + ";" + cliente.getApellido() + ";" + cliente.getDni() + ";"
-				+ cliente.getTel() + "\n";
+		return 		  cliente.getId() + 
+				";" + cliente.getNombre() + 
+				";" + cliente.getApellido() + 
+				";" + cliente.getDni() + 
+				";"	+ cliente.getTel().getID() +
+				";"	+ cliente.getCuit() +
+				";"	+ cliente.getEmail() +
+				";"	+ cliente.getDir().getID() +
+				";"	+ cliente.getFechaNac() +
+				";"	+ cliente.getPas().getNumeroPasaporte() +
+				";"	+ cliente.getPasfre().getNumero() 
+					+ "\n";
 
 	}
 
@@ -57,7 +69,14 @@ public class ClientesDAOImpArchivo implements IClienteDAO {
 				c.setId(cliente.getId());
 				c.setApellido(cliente.getApellido());
 				c.setNombre(cliente.getNombre());
+				c.setDni(cliente.getDni());
 				c.setTelID(cliente.getTel().getID());
+				c.setCuit(cliente.getCuit());
+				c.setEmail(cliente.getEmail());
+				c.setDirID(cliente.getDir().getID());
+				c.setFechaNac(cliente.getFechaNac());
+				c.setPasID(cliente.getPas().getNumeroPasaporte());
+				c.setPasfreID(cliente.getPasfre().getNumero());
 			}
 
 			AgregarCliente(c);
@@ -68,7 +87,7 @@ public class ClientesDAOImpArchivo implements IClienteDAO {
 
 	@Override
 	public void EliminarCliente(Cliente cliente) throws IOException {
-		// TODO Auto-generated method stub
+		
 
 		List<Cliente> listadoClientes = GetAll();
 
@@ -81,12 +100,12 @@ public class ClientesDAOImpArchivo implements IClienteDAO {
 		}
 
 	}
-
+	
 	@Override
 	public List<Cliente> GetAll() throws IOException {
 		// TODO Auto-generated method stub
 
-		archivo = new File("/Users/juan/Desktop/cliente.txt");
+		archivo = new File(path);
 		archivoReader = new FileReader(archivo);
 		archivoBufferReader = new BufferedReader(archivoReader);
 
@@ -106,8 +125,19 @@ public class ClientesDAOImpArchivo implements IClienteDAO {
 		String[] atributos = linea.split(";");
 
 		Cliente c = new Cliente();
+		
 		c.setId(Integer.valueOf(atributos[0]));
-
+		c.setApellido(atributos[1]);
+		c.setNombre(atributos[2]);
+		c.setDni(atributos[3]);
+		c.setTelID(Integer.valueOf(atributos[4]));
+		c.setCuit(atributos[5]);
+		c.setEmail(atributos[6]);
+		c.setDirID(Integer.valueOf(atributos[7]));
+		c.setFechaNac(Date.valueOf(atributos[8]));
+		c.setPasID(atributos[9]);
+		c.setPasfreID(atributos[10]);
+		
 		return c;
 	}
 

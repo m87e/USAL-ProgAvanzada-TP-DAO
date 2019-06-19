@@ -1,16 +1,32 @@
 package edu.usal.tp.negocio.dao.dominio;
 
 public class DirCompleta {
+	
+	private int ID;
 	private String calle;
 	private String altura;
 	private String ciudad;
-	private String pais; // generarlos como objetos
-	private String provincia; // generarlos como objetos
+	private Paises pais; 
+	private Provincias provincia;
 	private String codigoPostal;
 	
 	//Getter & Setter
+	
+	
 	public String getCalle() {
 		return calle;
+	}
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
+	}
+	public void setPais(Paises pais) {
+		this.pais = pais;
+	}
+	public void setProvincia(Provincias provincia) {
+		this.provincia = provincia;
 	}
 	public void setCalle(String calle) {
 		this.calle = calle;
@@ -27,18 +43,6 @@ public class DirCompleta {
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
-	public String getPais() {
-		return pais;
-	}
-	public void setPais(String pais) {
-		this.pais = pais;
-	}
-	public String getProvincia() {
-		return provincia;
-	}
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}
 	public String getCodigoPostal() {
 		return codigoPostal;
 	}
@@ -49,8 +53,8 @@ public class DirCompleta {
 	
 	//Constructors
 	
-	public DirCompleta(String calle, String altura, String ciudad, String pais, String provincia, String codigoPostal) {
-		super();
+	public DirCompleta(int ID, String calle, String altura, String ciudad, Paises pais, Provincias provincia, String codigoPostal) {
+		this.ID = ID;
 		this.calle = calle;
 		this.altura = altura;
 		this.ciudad = ciudad;
@@ -59,8 +63,21 @@ public class DirCompleta {
 		this.codigoPostal = codigoPostal;
 	}
 	public DirCompleta() {
-		super();
-		// TODO Auto-generated constructor stub
+		
+	}
+	public Paises getPais() {
+		return pais;
+	}
+	public Provincias getProvincia() {
+		return provincia;
+	}
+	public void setPaisID(String id) {
+		this.pais.setId(id);
+		
+	}
+	public void setProvinciaID(String id) {
+		this.provincia.setId(id);
+		
 	}
 	
 }

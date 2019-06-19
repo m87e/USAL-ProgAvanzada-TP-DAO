@@ -91,7 +91,7 @@ public class Cliente {
 	public void setTelID(int id) {
 		this.tel.setID(id);
 	}
-
+	
 	public PasajeroFrecuente getPasfre() {
 		return pasfre;
 	}
@@ -134,6 +134,22 @@ public class Cliente {
 		this.tel = tel;
 		this.pasfre = pasfre;
 		this.dir = dir;
+	}
+
+	
+	public void setDirID(int id) {
+		this.dir.setID(id);
+		
+	}
+
+	public void setPasID(String numeroPasaporte) {
+		this.pas.setNumeroPasaporte(numeroPasaporte);
+		
+	}
+
+	public void setPasfreID(String numero) {
+		this.pasfre.setNumero(numero);
+		
 	}
 
 }
